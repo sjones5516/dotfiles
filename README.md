@@ -6,20 +6,24 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Everything is
 
 | Source path                        | Installed to                     | Purpose                                                                                         |
 | ---------------------------------- | -------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `dot_bashrc`                       | `~/.bashrc`                      | Bash config: color aliases for `ls`/`grep`, simple prompt, `EDITOR=vim`, JetBrains Toolbox on `PATH`                      |
 | `dot_vimrc`, `dot_vim/`            | `~/.vimrc`, `~/.vim/`            | Vim config, `lamplit` colorscheme and airline theme                                             |
 | `private_dot_config/scroll/`       | `~/.config/scroll/`              | [scroll](https://github.com/dawsers/scroll) (Wayland compositor) config and i3bar status script |
 | `private_dot_config/foot/foot.ini` | `~/.config/foot/foot.ini`        | foot terminal (JetBrainsMono Nerd Font, 0.85 alpha)                                             |
+| `private_dot_config/mako/config`   | `~/.config/mako/config`          | [mako](https://github.com/emersion/mako) notification daemon (Lamplit colors, top-right, per-urgency borders, do-not-disturb mode) |
+| `private_dot_config/firejail/`     | `~/.config/firejail/`            | [Firejail](https://firejail.wordpress.com/) overrides for Firefox (`firefox.local`: skip AppArmor profile, allow gvfs/portal D-Bus access) |
 | `private_dot_config/gtk-{3,4}.0/`  | `~/.config/gtk-{3,4}.0/`         | GTK settings (dark, `Lamplit` theme, Adwaita icons)                                             |
-| `private_dot_config/mimeapps.list` | `~/.config/mimeapps.list`        | Default applications                                                                            |
+| `private_dot_config/mimeapps.list` | `~/.config/mimeapps.list`        | Default applications (thunar for directories, JetBrains Toolbox for `jetbrains://` links)       |
 | `dot_local/share/themes/Lamplit/`  | `~/.local/share/themes/Lamplit/` | GTK 3/4 theme                                                                                   |
 | `Pictures/background.png`          | `~/Pictures/background.png`      | Wallpaper (stored with Git LFS)                                                                 |
 
-`README.md` is listed in `.chezmoiignore`, so it is never copied to your home directory.
+`*.md` is listed in `.chezmoiignore`, so `README.md` is never copied to your home directory.
 
 ## Requirements
 
 - `chezmoi`, `git`, and `git-lfs` (the wallpaper is an LFS file)
-- Desktop: `scroll`, `foot`, `wmenu`, `swayidle`, `swaylock`, `thunar`
+- Desktop: `scroll`, `foot`, `wmenu`, `swayidle`, `swaylock`, `thunar`, `mako`
+- Optional: `firejail` (sandboxes Firefox via `firefox.local`)
 - Status bar: `wpctl` (PipeWire), `nmcli` (NetworkManager), `awk`
 - Font: JetBrainsMono Nerd Font
 - Vim with `curl` available (vim-plug bootstraps itself on first launch)
@@ -61,7 +65,7 @@ Naming follows chezmoi conventions: `dot_` becomes `.`, `private_` sets restrict
 | Keys                 | Action                          |
 | -------------------- | ------------------------------- |
 | `Super+Return`       | Open terminal (foot)            |
-| `Super+r`            | Launcher (wmenu-run)            |
+| `Super+r`            | Launcher (wmenu-run, via a login shell so `~/.bashrc` `PATH` applies) |
 | `Super+e`            | File manager (thunar)           |
 | `Super+Backspace`    | Close window                    |
 | `Super+h/j/k/l`      | Move focus                      |
