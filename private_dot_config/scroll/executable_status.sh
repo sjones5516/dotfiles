@@ -70,7 +70,7 @@ while :; do
     fi
 
     # Clock
-    out+=$(block "$(date +'%a %b %d  %H:%M')" "#383534" "#cbc49c")
+    out+=$(block "$(date +'%a %b %d  %-I:%M %p')" "#383534" "#cbc49c")
 
     printf '%s],\n' "${out%,}"
     sleep 2 & wait $!; kill $! 2>/dev/null
