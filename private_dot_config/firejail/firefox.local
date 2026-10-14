@@ -1,0 +1,8 @@
+# Don't force the firejail AppArmor profile (it blocks loading the Firefox profile)
+ignore apparmor
+ignore apparmor-replace
+
+# Let Firefox talk to gvfs over D-Bus (dbus-user filter blocks it by default)
+dbus-user.talk org.gtk.vfs.*
+dbus-user.talk org.gtk.vfs
+dbus-user.talk org.freedesktop.portal.*
