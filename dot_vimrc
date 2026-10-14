@@ -1,0 +1,88 @@
+" syntax highlighting
+syntax on
+filetype plugin indent on
+
+" ui
+set number
+set termguicolors
+
+" indent rules
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
+" encoding
+set encoding=UTF-8
+
+set clipboard=unnamedplus
+" Tell Vim to use wl-copy and wl-paste for clipboard operations
+if executable('wl-copy') && executable('wl-paste')
+    let g:clipboard = {
+          \   'name': 'wl-clipboard',
+          \   'copy': {
+          \      '+': 'wl-copy --type text/plain',
+          \      '*': 'wl-copy --type text/plain --primary',
+          \    },
+          \   'paste': {
+          \      '+': 'wl-paste --no-newline',
+          \      '*': 'wl-paste --no-newline --primary',
+          \   },
+          \ }
+endif
+
+" Set ale fixers and fmt on save
+let g:ale_fixers = {
+      \ 'c': ['clang-format'],
+      \ 'cpp': ['clang-format'],
+      \ 'markdown': ['prettier'],
+      \ }
+let g:ale_fix_on_save = 1
+
+" Set ale linters (pyright gives completion + type-checking, flake8 for style/lint)
+" 'analyzer' is ALE's name for rust-analyzer (completion + type-checking for Rust)
+" clangd gives completion + type-checking for C/C++
+" tsserver gives completion + type-checking for JS/TS
+" markdownlint checks style/lint for Markdown
+let g:ale_linters = {
+      \ 'c': ['clangd'],
+      \ 'cpp': ['clangd'],
+      \ 'markdown': ['markdownlint'],
+      \ }
+
+" Enable ALE's built-in autocomplete
+let g:ale_completion_enabled = 1
+
+" Autocomplete keybindings
+" Ctrl-Space: open completion popup (or select next entry if already open)
+inoremap <expr> <C-Space> pumvisible() ? "\<C-n>" : "\<C-x>\<C-o>"
+inoremap <expr> <Nul> pumvisible() ? "\<C-n>" : "\<C-x>\<C-o>"
+" Ctrl-j / Ctrl-k: move down/up through the popup menu
+inoremap <expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+inoremap <expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
+" install vimplug
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin()
+Plug 'vim-airline/vim-airline'
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+Plug 'w0rp/ale'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+call plug#end()
+
+" set colorscheme
+set background=dark
+colorscheme lamplit
+let g:airline_theme = 'lamplit'
+
+" set ultisnip keybinds
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"

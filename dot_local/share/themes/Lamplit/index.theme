@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=X-GNOME-Metatheme
+Name=Lamplit
+Comment=Lamplit Monastery palette
+Encoding=UTF-8
+
+[X-GNOME-Metatheme]
+GtkTheme=Lamplit
+MetacityTheme=Lamplit
+IconTheme=Adwaita
