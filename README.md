@@ -11,7 +11,6 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Everything is
 | `private_dot_config/scroll/`       | `~/.config/scroll/`              | [scroll](https://github.com/dawsers/scroll) (Wayland compositor) config and i3bar status script |
 | `private_dot_config/foot/foot.ini` | `~/.config/foot/foot.ini`        | foot terminal (JetBrainsMono Nerd Font, 0.85 alpha)                                             |
 | `private_dot_config/mako/config`   | `~/.config/mako/config`          | [mako](https://github.com/emersion/mako) notification daemon (Lamplit colors, top-right, per-urgency borders, do-not-disturb mode) |
-| `private_dot_config/firejail/`     | `~/.config/firejail/`            | [Firejail](https://firejail.wordpress.com/) overrides for Firefox (`firefox.local`: skip AppArmor profile, allow gvfs/portal D-Bus access) |
 | `private_dot_config/gtk-{3,4}.0/`  | `~/.config/gtk-{3,4}.0/`         | GTK settings (dark, `Lamplit` theme, Adwaita icons)                                             |
 | `private_dot_config/mimeapps.list` | `~/.config/mimeapps.list`        | Default applications (thunar for directories, JetBrains Toolbox for `jetbrains://` links)       |
 | `dot_local/share/themes/Lamplit/`  | `~/.local/share/themes/Lamplit/` | GTK 3/4 theme                                                                                   |
@@ -23,7 +22,6 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/). Everything is
 
 - `chezmoi`, `git`, and `git-lfs` (the wallpaper is an LFS file)
 - Desktop: `scroll`, `foot`, `wmenu`, `swayidle`, `swaylock`, `thunar`, `mako`
-- Optional: `firejail` (sandboxes Firefox via `firefox.local`)
 - Status bar: `wpctl` (PipeWire), `nmcli` (NetworkManager), `awk`
 - Font: JetBrainsMono Nerd Font
 - Vim with `curl` available (vim-plug bootstraps itself on first launch)
